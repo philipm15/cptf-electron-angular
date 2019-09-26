@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 const purchases: PurchaseModel[] = [
   {
     id: 1,
+    title: 'essentials',
     total: 20,
     date: new Date(),
     tags: ['test', 'test'],
@@ -27,6 +28,7 @@ const purchases: PurchaseModel[] = [
   {
     id: 2,
     total: 5,
+    title: 'essentials',
     date: new Date(),
     items: [
       {
@@ -69,7 +71,7 @@ export class PurchaseState {
     context: StateContext<PurchaseStateModel>,
     action: LoadPurchases
   ): Observable<PurchaseModel[]> {
-    context.patchState({ loading: true, purchases });
+    context.patchState({ loading: true, purchases: purchases });
     return of(purchases);
   }
 }

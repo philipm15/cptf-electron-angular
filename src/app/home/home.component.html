@@ -3,25 +3,32 @@
   <nb-sidebar>Sidebar Content</nb-sidebar>
   <nb-layout-column>
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-12 col-md-6">
         <nb-card>
-          <nb-card-body>
-            hallo
-          </nb-card-body>
+          <nb-card-header>
+            Purchases
+          </nb-card-header>
+          <nb-list>
+            <nb-list-item
+              class="d-flex justify-content-between"
+              *ngFor="let purchase of purchases$ | async"
+            >
+              <span>{{ purchase.title }}</span>
+              <span>{{ purchase.date | date: 'dd.MM.yyyy' }}</span>
+              <span>{{ purchase.total }}</span>
+            </nb-list-item>
+          </nb-list>
         </nb-card>
       </div>
 
       <div class="col-12 col-md-6">
         <nb-card>
+          <nb-card-header>
+            test
+          </nb-card-header>
           <nb-card-body>
-            hallo 2
+            test
           </nb-card-body>
-        </nb-card>
-      </div>
-
-      <div class="col-12">
-        <nb-card>
-          <nb-card-body> </nb-card-body>
         </nb-card>
       </div>
     </div>
