@@ -17,6 +17,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
+import { NbThemeModule, NbSidebarModule } from '@nebular/theme';
+import { PurchaseState } from './core/store/purchase.state';
+import { NgxsModule } from '@ngxs/store';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    NgxsModule.forRoot([PurchaseState]),
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -39,7 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NbThemeModule.forRoot({ name: 'cosmic' }),
+    NbSidebarModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
